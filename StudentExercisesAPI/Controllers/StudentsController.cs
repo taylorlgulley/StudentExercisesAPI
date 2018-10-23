@@ -31,7 +31,7 @@ namespace StudentExercisesAPI.Controllers
             }
         }
 
-        // GET api/students
+        // GET api/students?q=Taco
         [HttpGet]
         public async Task<IActionResult> Get(string q)
         {
@@ -82,14 +82,13 @@ namespace StudentExercisesAPI.Controllers
         {
             string sql = $@"
             SELECT
-                i.Id,
-                i.FirstName,
-                i.LastName,
-                i.SlackHandle,
-                i.Specialty,
-                i.CohortId
-            FROM Student i
-            WHERE i.Id = {id}
+                s.Id,
+                s.FirstName,
+                s.LastName,
+                s.SlackHandle,
+                s.CohortId
+            FROM Student s
+            WHERE s.Id = {id}
             ";
 
             using (IDbConnection conn = Connection)
