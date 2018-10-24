@@ -102,14 +102,16 @@ namespace StudentExercisesAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Student student)
         {
-            string sql = $@"INSERT INTO Student VALUES
+            string sql = $@"INSERT INTO Student 
+            (FirstName, LastName, SlackHandle, CohortId)
+            VALUES
             (
-                null,
                 '{student.FirstName}'
                 ,'{student.LastName}'
                 ,'{student.SlackHandle}'
+                ,{student.CohortId}
             );
-            select seq from sqlite_sequence where name='Student';";
+            SELECT SCOPE_IDENTITY();";
 
             using (IDbConnection conn = Connection)
             {
