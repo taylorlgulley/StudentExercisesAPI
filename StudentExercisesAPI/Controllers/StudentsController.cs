@@ -129,7 +129,8 @@ namespace StudentExercisesAPI.Controllers
             UPDATE Student
             SET FirstName = '{student.FirstName}',
                 LastName = '{student.LastName}',
-                SlackHandle = '{student.SlackHandle}'
+                SlackHandle = '{student.SlackHandle}',
+                CohortId = '{student.CohortId}'
             WHERE Id = {id}";
 
             try
